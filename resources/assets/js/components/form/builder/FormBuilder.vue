@@ -1,4 +1,4 @@
-<template>
+p<template>
     <div>
         <input type="hidden" v-if="field.primary"
                :name="num"
@@ -48,8 +48,8 @@
         ></v-checkbox>
         <v-select v-else-if="field.type=='selectbox'"
                   :name="num"
-                  :value="items[num+'_id']"
                   :items="field.items"
+                  :value="items[num+'_id']"
                   :id="num"
                   v-model="items[num+'_id']"
                   :item-text="field.title"

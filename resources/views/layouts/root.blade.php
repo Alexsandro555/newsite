@@ -13,8 +13,8 @@
     <title>@yield('title')</title>
 </head>
 <body>
-    <div id="app">
-        <v-app>
+    <div id="app" v-cloak>
+        <v-app class="leader">
             <v-container pa-0 fluid grid-list-xs text-xs-center>
                 <v-layout column wrap>
                     <header>
@@ -25,15 +25,14 @@
                                     <v-flex xs8 text-xs-left>
                                         <v-list class="top-menu">
                                             <v-list-tile class="top-menu__item"><a href="#">О компании</a></v-list-tile>
-                                            <v-list-tile class="top-menu__item"><a href="#">Новости</a></v-list-tile>
+                                            <v-list-tile class="top-menu__item"><a href="/article/list">Статьи</a></v-list-tile>
                                             <v-list-tile class="top-menu__item"><a href="#">Оборудование</a></v-list-tile>
                                             <v-list-tile class="top-menu__item"><a href="#">Доставка и оплата</a></v-list-tile>
                                             <v-list-tile class="top-menu__item"><a href="#">Контакты</a></v-list-tile>
                                         </v-list>
                                     </v-flex>
                                     <v-flex xs4 text-xs-right>
-                                        <a href="#" class="header-menu__auth-btn">Вход на сайт</a>
-                                        <a href="#" class="header-menu__auth-btn">Регистрация</a>
+                                        <auth-widget/>
                                     </v-flex>
                                 </v-layout>
                             </div>
@@ -42,17 +41,17 @@
                                     <v-flex class="telephone top-20" xs5 text-xs-right>
                                         Работаем с <b>8</b> до <b>22</b> без выходных<br>
                                         <span class="telephone__number">+7(495)780 47 96</span><br>
-                                        <img class="telephone__img" src="./images/telephone-img.png" align="middle"/>
+                                        <img class="telephone__img" src="{{asset('images/telephone-img.png')}}" align="middle"/>
                                         <a class="telephone__link" href="#">заказать звонок</a>
                                     </v-flex>
                                     <v-flex xs2 text-xs-center class="top-20">
-                                        <img src="./images/logo.png"/>
+                                        <a href="/"><img src="{{asset('images/logo.png')}}/"/></a>
                                     </v-flex>
                                     <v-flex xs4 text-xs-left class="find top-20">
                                         <input placeholder="Поиск по сайту" class="find-input" type="text"><br><br>
                                         <v-layout row wrap>
-                                            <v-flex xs2>
-                                                <img src="./images/cart.png" align="middle"/>
+                                            <v-flex xs2 text-xs-center>
+                                                <img src="{{asset('images/cart.png')}}" align="middle"/>
                                             </v-flex>
                                             <v-flex xs6 text-align-left class="cart__info">
                                                 <span class="cart__gold">2</span> товара на<br>
@@ -67,7 +66,7 @@
                     </header>
                     @yield('content')
                     <footer>
-                        <div class="wrapper footer">
+                        <div class="wrapper footers">
                             <div>
                                 <v-layout row wrap>
                                     <v-flex xs3>
@@ -80,11 +79,11 @@
                                         </v-layout>
                                     </v-flex>
                                     <v-flex xs2>
-                                        <a href="#"><img src="./images/social-f.png"/></a>
-                                        <a href="#"><img src="./images/social-t.png"/></a>
-                                        <a href="#"><img src="./images/social-ok.png"/></a>
-                                        <a href="#"><img src="./images/social-v.png"/></a>
-                                        <a href="#"><img src="./images/social-y.png"/></a>
+                                        <a href="#"><img src="{{asset('images/social-f.png')}}"/></a>
+                                        <a href="#"><img src="{{asset('images/social-t.png')}}"/></a>
+                                        <a href="#"><img src="{{asset('images/social-ok.png')}}"/></a>
+                                        <a href="#"><img src="{{asset('images/social-v.png')}}"/></a>
+                                        <a href="#"><img src="{{asset('images/social-y.png')}}"/></a>
                                     </v-flex>
                                     <v-flex xs2>
                                         <v-list class="footer__list">
@@ -103,9 +102,9 @@
                                         </v-list>
                                     </v-flex>
                                     <v-flex xs3>
-                                        <img text-align-center src="./images/logo-footer.png"/><br>
+                                        <img text-align-center src="{{asset('images/logo-footer.png')}}"/><br>
                                         <span class="telephone__number">+7(495)780 47 96</span><br>
-                                        <img class="telephone__img" src="./images/telephone-img.png" align="middle"/>
+                                        <img class="telephone__img" src="{{asset('images/telephone-img.png')}}" align="middle"/>
                                         <a class="telephone__link" href="#">заказать звонок</a>
                                         <p>
                                             г. Москва, Большая <br>Семеновская д.15
@@ -133,6 +132,8 @@
                     </footer>
                 </v-layout>
             </v-container>
+            <dialog-registration></dialog-registration>
+            <dialog-login></dialog-login>
         </v-app>
     </div>
     <script src="{{mix('/js/app.js')}}" type="application/javascript"></script>

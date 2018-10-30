@@ -1,3 +1,7 @@
+.application.theme--light.leader{
+  background-color: #dcecf7;
+}
+
 .wrapper {
   width: 1200px;
   margin: auto;
@@ -71,6 +75,10 @@
   background-color: $color-yellow;
 }
 
+[v-cloak] {
+  display: none;
+}
+
 @import 'menu-left';
 @import 'content';
 @import 'product';
@@ -81,4 +89,7 @@
 @import 'news';
 @import 'detail';
 @import 'detail_characteristics';
+@import 'SEO.scss';
+@import 'articles.scss';
+@import 'breadcrumbs.scss';
 @import 'footer';

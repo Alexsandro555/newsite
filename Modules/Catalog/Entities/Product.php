@@ -107,7 +107,7 @@ class Product extends Model
   }
 
   public function attributes() {
-    return $this->belongsToMany('Modules\Catalog\Entities\Attribute')->withPivot('value');
+    return $this->belongsToMany('Modules\Catalog\Entities\Attribute')->withPivot('value','group_id');
   }
 
   /**

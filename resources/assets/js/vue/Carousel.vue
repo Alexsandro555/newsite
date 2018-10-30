@@ -1,23 +1,15 @@
 <template>
-    <div ref="carousel" class="carousel">
+    <div ref="carousel" class="carousel-img">
         <v-layout row wrap>
             <div class="arrow">
                 <img @click="prev" src="/images/slider-left-arrow.png"/>
             </div>
-            <div class="gallery">
+            <div class="gallery-img">
                 <ul ref="list" class="images">
-                    <li> <img src="/images/slide-element.png"/></li>
-                    <li><img src="/images/slide-element.png"/></li>
-                    <li><img src="/images/slide-element.png"/></li>
-                    <li><img src="/images/slide-element.png"/></li>
-                    <li><img src="/images/slide-element.png"/></li>
-                    <li><img src="/images/slide-element.png"/></li>
-                    <li><img src="/images/slide-element.png"/></li>
-                    <li><img src="/images/slide-element.png"/></li>
-                    <li><img src="/images/slide-element.png"/></li>
-                    <li><img src="/images/slide-element.png"/></li>
-                    <li><img src="/images/slide-element.png"/></li>
-                    <li><img src="/images/slide-element.png"/></li>
+                    <li v-for="image in images">
+                        <img v-if="image.file" :src="'/storage/'+image.file"/>
+                        <img v-else src="/images/no-image.png"/>
+                    </li>
                 </ul>
             </div>
             <div class="arrow">
@@ -28,7 +20,12 @@
 </template>
 <script>
     export default {
-        props: { },
+        props: {
+            images: {
+                type: Array,
+                default: []
+            }
+        },
         data() {
             return {
                 position: 0,
@@ -54,7 +51,7 @@
      }
 </script>
 <style scoped>
-    .carousel {
+    .carousel-img {
         position: relative;
         width: 293px;
         margin: 10px 20px;
@@ -62,11 +59,11 @@
     .images img {
         display: block;
     }
-    .gallery {
+    .gallery-img {
         width: 270px;
         overflow: hidden;
     }
-    .gallery ul {
+    .gallery-img ul {
         height: 59px;
         width: 9999px;
         margin: 0;
@@ -75,8 +72,8 @@
         transition: margin-left 250ms;
         font-size: 0;
     }
-    .gallery li {
-       float:left;
+    .gallery-img li {
+        float:left;
     }
     .arrow {
         margin-top: 15px;

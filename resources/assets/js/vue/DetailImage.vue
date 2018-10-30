@@ -1,36 +1,27 @@
 <template>
-    <v-container fluid grid-list-md>
-        <v-layout column align-center wrap>
-            <div class="detail-image-wrap">
-                <div class="detail-images-center">
-                    <img v-if="curImage" :src="curImage"/>
-                    <img v-else src="/images/no-image.png" width="200px"/>
-                </div>
+    <div class="detail__image--wrapper">
+        <div class="detail__image">
+            <div v-if="stock" class="detail__image-label">
+                Акция!
             </div>
-            <div>
-                &nbsp;
-                <carousel style="width: 280px" v-if="items.length>0"
-                          name="carousel4"
-                          :pagination-enabled=false
-                          :navigation-enabled=true
-                          :per-page=3
-                          :per-page-custom="[[480, 3]]">
-                    <slide class="outer-carousel-slide" v-for="item in items" :key="item.id">
-                        <div class="carousel-slide" @click="selectSlide(item.id)">
-                            <img :src="'/storage/'+item.file"/>
-                        </div>
-                    </slide>
-                </carousel>
+            <img v-if="curImage" :src="curImage"/>
+            <img v-else src="/images/no-image.png"/>
+            <div class="detail__image-carousel">
+                <carousel :images="items"></carousel>
             </div>
-        </v-layout>
-    </v-container>
+        </div>
+    </div>
 </template>
 <script>
-    import { Carousel, Slide } from 'vue-carousel';
+    import Carousel from './Carousel.vue'
 
     export default {
         props: {
             url: String,
+            stock: {
+                Type: Boolean,
+                default: false
+            }
         },
         data: function() {
             return {
@@ -49,9 +40,8 @@
                 this.curImage = this.items.length>0?'/storage/' + this.elements[0].config.files.main.filename:null
             }).catch(error => { console.log(error); });
         },
-        components: {
-            Carousel,
-            Slide
+        comments: {
+          Carousel
         },
         methods: {
             selectSlide: function (id, event) {
@@ -65,42 +55,3 @@
     }
 </script>
 
-<style scoped>
-    .detail__image {
-        display: block;
-    }
-    .detail-image-wrap {
-        display: block;
-        width: 306px;
-        height: 259px;
-        background-color: white;
-    }
-
-    .detail-images-center {
-        display: table-cell;
-        width: 306px;
-        height: 259px;
-        vertical-align: middle;
-    }
-
-    .detail-images-center img {
-        margin: 0px auto;
-    }
-
-    .outer-carousel-slide {
-        line-height: 90px;
-    }
-
-    .carousel-slide {
-        display: inline-block; /* центрировать..*/
-        vertical-align: middle;  /* ..по вертикали */
-        background-color: white;
-        width: 86px;
-        height: 93px;
-    }
-
-    .carousel-slide img {
-        vertical-align: middle;
-        line-height: 80px;
-    }
-</style>

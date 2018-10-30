@@ -182,6 +182,8 @@ return [
 
         /* Пакет корзины */
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
+
+        Watson\Breadcrumbs\ServiceProvider::class
     ],
 
     /*
@@ -231,5 +233,6 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Slug' => Alexusmai\Ruslug\RuslugFacade::class,
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
+        'Breadcrumbs' => Watson\Breadcrumbs\Facade::class
     ],
 ];

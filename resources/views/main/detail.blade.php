@@ -1,6 +1,13 @@
 @extends('layouts.root')
 
 @section('content')
+    <div class="breadcrumbs">
+        <div class="wrapper">
+            <v-flex xs12 text-xs-left>
+                {{ Breadcrumbs::render() }}
+            </v-flex>
+        </div>
+    </div>
     <div class="content">
         <div class="wrapper detail">
             <v-layout row wrap>
@@ -10,29 +17,19 @@
                 <v-flex xs9>
                     <v-layout row wrap>
                         <v-flex xs5>
-                            <div class="detail__image--wrapper">
-                                <div class="detail__image">
-                                    <div class="detail__image-label">
-                                        Акция!
-                                    </div>
-                                    <img src="./images/detail-image.png"/>
-                                    <div class="detail__image-carousel">
-                                        <carousel></carousel>
-                                    </div>
-                                </div>
-                            </div>
+                            <detail-image :stock="{{$product->special?$product->special:'false'}}" :url="'/files/product-image/{{$product->id}}'"/>
                         </v-flex>
                         <v-flex xs7 class="detail__info" text-xs-left>
-                            <h1>Мотор редуктор NMRV MOTOVARIO (MOTOVARIO) Италия</h1><br>
-                            Артикул, описание<br>
-                            <img src="./images/heading.png"/><br>
+                            <h1>{{$product->title}}</h1><br>
+                            {{$product->vendor}} описание<br>
+                            <img src="{{asset('images/heading.png')}}"/><br>
                             <div class="detail__price">
-                                <span class="detail__old-price">25 366.00 руб.</span><br>
-                                <span class="detail__price--current">22 366.00</span> руб.<br>
+                                <span class="detail__old-price">{{$product->price}} руб.</span><br>
+                                <span class="detail__price--current">{{$product->price}}</span> руб.<br>
                                 <p>
                                     <a class="figure-button" href="#">
                                         Заказать
-                                        <img src="./images/btn-sale-image.png"/>
+                                        <img src="{{asset('images/btn-sale-image.png')}}"/>
                                     </a>
                                     <a class="button-ask-sale" href="#">Узнать скидку</a>
                                 </p>
@@ -54,25 +51,23 @@
                             <v-tab-item key="description">
                                 <div class="detail__characteristics-description">
                                     <h2>Описание</h2>
-                                    <img src="./images/yellow-line.png"/><br>
+                                    <img src="{{asset('images/yellow-line.png')}}"/><br>
+                                    {{$product->description}}
                                 </div>
                             </v-tab-item>
                             <v-tab-item key="characteristics">
                                 <div class="detail__characteristics-characteristics">
                                     <h2>Характеристики</h2>
-                                    <img src="./images/yellow-line.png"/><br>
-                                    <dl>
-                                        <dt>Мощьность</dt><dd>0.18 кВт</dd>
-                                        <dt>Частота вращения</dt><dd>3000 об/мин</dd>
-                                        <dt>Напряжение</dt><dd>229/300 В</dd>
-                                        <dt>Ток статора</dt><dd>0.96/0.55 A</dd>
-                                        <dt>КПП</dt><dd>62%</dd>
-                                        <dt>Коэф. мощности</dt><dd>0,8</dd>
-                                        <dt>Mmax/Mн</dt><dd>2.2</dd>
-                                        <dt>Мп/Мн</dt><dd>2.2</dd>
-                                        <dt>In/Iн</dt><dd>5.5</dd>
-                                    </dl>
-
+                                    <img src="{{asset('images/yellow-line.png')}}"/><br>
+                                    <v-layout row wrap>
+                                        @foreach($product->attributes->chunk(9) as $chunkAttributes)
+                                            <dl class="detail__characteristics-characteristics-attributes">
+                                                @foreach($chunkAttributes as $attribute)
+                                                    <dt>{{$attribute->title}}</dt><dd>{{$attribute->pivot->value}}</dd>
+                                                @endforeach
+                                            </dl>
+                                        @endforeach
+                                    </v-layout>
                                 </div>
                             </v-tab-item>
                             <v-tab-item key="advantages">
@@ -110,7 +105,7 @@
                         <div class="product">
                             <div class="product-image-wrapper">
                                 <div class="product-image">
-                                    <img src="./images/product-image.png"/>
+                                    <img src="{{asset('images/product-image.png')}}"/>
                                 </div>
                             </div>
                             <div class="product__title">
@@ -124,7 +119,7 @@
                                                     </span>
                                 </v-flex>
                                 <v-flex xs4>
-                                    <img src="./images/btn-sale.png"/>
+                                    <img src="{{asset('images/btn-sale.png')}}"/>
                                 </v-flex>
                             </v-layout>
                         </div>
@@ -137,6 +132,18 @@
                         </div>
                     </div>
                 </v-layout>
+            </v-flex>
+        </div>
+    </div>
+    <div class="SEO">
+        <div class="wrapper">
+            <v-flex xs12 text-xs-left class="bottom-20 top-20">
+                <p class="headsite">
+                    <span>Заголовок SEO</span><br>
+                </p>
+                <p>
+                    Современная приводная техника пришла на смуну устаревшим моделям, которые уже свое отработали.
+                </p>
             </v-flex>
         </div>
     </div>

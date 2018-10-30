@@ -50,7 +50,7 @@
                 </v-flex>
             </v-card-title>
             <v-card-actions>
-                <v-btn color="green darken-4" dark @click.stop="register">Зарегистрироваться</v-btn>
+                <v-btn color="blue darken-4" dark @click.stop="register">Зарегистрироваться</v-btn>
                 <v-btn color="primary" flat @click.stop="close">Закрыть</v-btn>
             </v-card-actions>
         </v-card>
@@ -119,7 +119,7 @@
 </script>
 <style>
     .register-head {
-        background-color: #1B5E20;
+        background-color: #0e47a1;
         color: white;
     }
 </style>

@@ -40,7 +40,7 @@
                 </v-flex>
             </v-card-title>
             <v-card-actions>
-                <v-btn color="green darken-4" dark @click.stop="onSubmit">Войти</v-btn>
+                <v-btn color="blue darken-4" dark @click.stop="onSubmit">Войти</v-btn>
                 <v-btn color="primary" flat @click.stop="close">Закрыть</v-btn>
             </v-card-actions>
         </v-card>

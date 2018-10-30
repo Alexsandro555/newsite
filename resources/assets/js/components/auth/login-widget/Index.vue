@@ -4,8 +4,8 @@
             <a class="login-widget" href="/admin">{{username}}</a>
         </div>
         <div v-else>
-            <a class="login-widget" @click.stop="onLogin" href="#">Войти</a> |
-            <a class="login-widget" @click.stop="registration">Регистрация</a>
+            <a href="#" @click.stop="onLogin" class="header-menu__auth-btn">Вход на сайт</a>
+            <a href="#" @click.stop="registration" class="header-menu__auth-btn">Регистрация</a>
         </div>
     </div>
 </template>
@@ -41,7 +41,9 @@
 
 <style>
     .login-widget {
+        color: #1e88d7;
         text-decoration: none;
-        color: white;
+        line-height: 54px;
+        margin-right: 25px;
     }
 </style>

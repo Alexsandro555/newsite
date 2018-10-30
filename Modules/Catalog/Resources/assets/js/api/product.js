@@ -10,7 +10,7 @@ export const productApi = {
                 axios.get(this.url+'/attribute-values/'+id).then(res => {
                     productAttributes.forEach(productAttribute => {
                         let filtered = res.data.filter(item => item["id"] === productAttribute["id"])
-                        attributes.push({attribute_id: productAttribute["id"], title: productAttribute["title"], value: filtered.length !== 0? filtered[0]["pivot"]["value"]:""})
+                        attributes.push({attribute_id: productAttribute["id"], title: productAttribute["title"], value: filtered.length !== 0? filtered[0]["pivot"]["value"]:"", group_id: filtered.length !== 0? filtered[0]["pivot"]["group_id"]:""})
                     });
                     resolve(attributes)
                 }).catch(error => {

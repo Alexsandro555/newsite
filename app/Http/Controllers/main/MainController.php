@@ -14,7 +14,8 @@ use MongoDB\BSON\Type;
 class MainController extends Controller
 {
   public function index() {
-    return view('main.index');
+    $specialProducts = Product::with('files','type_product','line_product')->whereNotNull('special')->inRandomOrder()->get();
+    return view('main.index', compact('specialProducts'));
   }
 
   public function authenticated(Request $request) {

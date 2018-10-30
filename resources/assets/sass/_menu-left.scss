@@ -12,11 +12,11 @@
   padding: 10px;
 }
 
-.theme--light.v-list.menu-left__list {
+.application .theme--light.list, .theme--light .list.menu-left__list {
   background: none;
 }
 
-.menu-left__list .v-list__tile {
+.menu-left__list .list__tile {
   font-size: 0.9em;
   color: $color-blue-dark;
   text-align: left;
@@ -27,7 +27,7 @@
   background: url('#{$path}/menu-left-layer-img.png') left center no-repeat;
 }
 
-.menu-left__list .v-list__tile:hover {
+.menu-left__list .list__tile:hover {
   background-color: $color-blue;
   color: $color-white;
 }
@@ -47,21 +47,21 @@
   background: url('#{$path}/menu-left-marker.png') left center no-repeat;
 }
 
-.menu-left__sub--light .v-list__tile {
+.menu-left__sub--light .list__tile {
   background-color: $color-blue;
   color: $color-white;
 }
 
-.menu-left__sub--dark .v-list__tile {
+.menu-left__sub--dark .list__tile {
   background-color: $color-blue-light-dark;
   color: $color-white;
 }
 
-.menu-left__sub .v-list__tile:hover {
+.menu-left__sub .list__tile:hover {
   background-color: $color-blue-light-dark;
 }
 
-.theme--light.v-list.menu-left__list.tom {
+.application .theme--light.list, .theme--light .list.menu-left__list.tom {
   background-color: $color-blue;
 }
 

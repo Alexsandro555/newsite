@@ -7,17 +7,17 @@
   text-transform: uppercase;
 }
 
-.detail__characteristics .v-tabs__container{
+.detail__characteristics .tabs__container{
   background-color: $color-blue-dark;
   color: $color-white;
   font-family: $font-gilroy-extrabold;
 }
 
-.detail__characteristics .v-tabs__item {
+.detail__characteristics .tabs__item {
   color: $color-white;
 }
 
-.detail__characteristics .v-tabs__item--active {
+.detail__characteristics .tabs__item--active {
   background-color: $color-yellow;
 }
 
@@ -51,5 +51,9 @@
       font-weight: bold;
     }
   }
+}
+
+.detail__characteristics-characteristics-attributes {
+  margin-left: 30px;
 }
 

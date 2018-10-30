@@ -10,11 +10,11 @@
   padding-bottom: 20px;
 }
 
-.theme--light.v-list.about__list  {
+.application .theme--light.list, .theme--light .list.about__list  {
   background: none;
 }
 
-.about__list .v-list__tile {
+.about__list .list__tile {
   font-size: 0.9em;
   text-align: left;
   background: url('#{$path}/footer-list-mark.png') left center no-repeat;

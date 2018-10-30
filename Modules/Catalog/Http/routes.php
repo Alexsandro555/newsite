@@ -12,11 +12,11 @@ Route::group(['middleware' => 'web', 'prefix' => 'catalog', 'namespace' => 'Modu
   Route::get('/attributes/{id}', 'CatalogController@attributes');
   Route::get('/attribute-values/{id}', 'CatalogController@attributeValues');
   Route::patch('/attributes', 'CatalogController@saveAttributes');
-  /*Route::post('/save-attributes',
+  Route::post('/save-attributes',
     [
       'before' => 'csrf',
       'uses' => 'CatalogController@saveAttributes'
-    ]);*/
+    ]);
 
   //=========================TypeProduct============================================
   Route::get('/type-product', 'TypeProductController@index');

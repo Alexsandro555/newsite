@@ -254,7 +254,7 @@
                     this.selectedFiltr = null;*/
                     this.$refs["form-attr"].reset();
                     //this.$router.push('bind-attributes')
-                    //location.reload();
+                    location.reload();
                 }).catch(error => {
                     console.log(error);
                 });

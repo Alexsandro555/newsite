@@ -6,12 +6,71 @@
             <div class="abs-position">
                 <left-menu></left-menu>
             </div>
-            <v-flex xs9 offset-xs3 text-xs-left class="bottom-20">
+            <v-flex xs10 offset-xs2 text-xs-left class="bottom-20">
                 <v-layout row wrap>
                     <v-flex xs9>
                         <p class="headsite">
                             <span>Наша продукция</span><br>
                             кто мы и что предлагаем
+                        </p>
+                    </v-flex>
+                    <v-flex xs3 text-xs-right>
+                        <a href="#" class="content-button">Смотреть каталог</a>
+                    </v-flex>
+                </v-layout>
+                <v-layout row wrap>
+                    @foreach($specialProducts as $specialProduct)
+                        <div class="product-wrapper">
+                            <div class="product">
+                                <div class="product-image-wrapper">
+                                    <div class="product-image">
+                                        @if($specialProduct->files->count()>0)
+                                            @foreach($specialProduct->files as $fileRecord)
+                                                @foreach($fileRecord->config as $files)
+                                                    @foreach($files as $key => $file)
+                                                        @if($key == 'medium')
+                                                            <img src="/storage/{{$file['filename']}}"/>
+                                                        @endif
+                                                    @endforeach
+                                                @endforeach
+                                                @break
+                                            @endforeach
+                                        @else
+                                            <img src="/images/no-image-medium.png"/>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="product__title">
+                                    <a href="/catalog/{{$specialProduct->type_product->title}}/{{$specialProduct->line_product?$specialProduct->line_product->title:'empty'}}/{{$specialProduct->url_key}}">
+                                        {{str_limit($specialProduct->title, $limit = 27, $end="...")}}
+                                    </a>
+                                </div>
+                                <v-layout row wrap>
+                                    <v-flex xs8 text-xs-center>
+                                        <span class="product-old-price">{{$specialProduct->price}} руб.</span><br>
+                                        <span class="product-price-wrapper">
+                                                        <span class="product-price">{{$specialProduct->price}}</span> руб.
+                                                    </span>
+                                    </v-flex>
+                                    <v-flex xs4>
+                                        <img src="./images/btn-sale.png"/>
+                                    </v-flex>
+                                </v-layout>
+                            </div>
+                        </div>
+                    @endforeach
+                </v-layout>
+            </v-flex>
+        </div>
+    </div>
+    <div class="best-sale">
+        <div class="wrapper">
+            <v-flex xs12 text-xs-left class="bottom-20 top-20">
+                <v-layout row wrap>
+                    <v-flex xs9>
+                        <p class="headsite_best-sale">
+                            <span>Лучшие продажи</span><br>
+                            популярные продукты
                         </p>
                     </v-flex>
                     <v-flex xs3 text-xs-right>
@@ -45,29 +104,26 @@
                     <div class="product-wrapper">
                         <div class="product">
                             <div class="product-image-wrapper">
-                                <div class="product-image"></div>
+                                <div class="product-image">
+                                    <img src="./images/product-image.png"/>
+                                </div>
                             </div>
+                            <div class="product__title">
+                                <a href="#">Название электродвигателя</a>
+                            </div>
+                            <v-layout row wrap>
+                                <v-flex xs8 text-xs-center>
+                                    <span class="product-old-price">25 366.00 руб.</span><br>
+                                    <span class="product-price-wrapper">
+                                                        <span class="product-price">22 366.00</span> руб.
+                                                    </span>
+                                </v-flex>
+                                <v-flex xs4>
+                                    <img src="./images/btn-sale.png"/>
+                                </v-flex>
+                            </v-layout>
                         </div>
                     </div>
-                </v-layout>
-            </v-flex>
-        </div>
-    </div>
-    <div class="best-sale">
-        <div class="wrapper">
-            <v-flex xs12 text-xs-left class="bottom-20 top-20">
-                <v-layout row wrap>
-                    <v-flex xs9>
-                        <p class="headsite_best-sale">
-                            <span>Лучшие продажи</span><br>
-                            популярные продукты
-                        </p>
-                    </v-flex>
-                    <v-flex xs3 text-xs-right>
-                        <a href="#" class="content-button">Смотреть каталог</a>
-                    </v-flex>
-                </v-layout>
-                <v-layout row wrap>
                     <div class="product-wrapper">
                         <div class="product">
                             <div class="product-image-wrapper">
