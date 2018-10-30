@@ -45,7 +45,7 @@
                                         <a class="telephone__link" href="#">заказать звонок</a>
                                     </v-flex>
                                     <v-flex xs2 text-xs-center class="top-20">
-                                        <a href="/"><img src="{{asset('images/logo.png')}}/"/></a>
+                                        <a href="/"><img src="{{asset('images/logo.png')}}"/></a>
                                     </v-flex>
                                     <v-flex xs4 text-xs-left class="find top-20">
                                         <input placeholder="Поиск по сайту" class="find-input" type="text"><br><br>
