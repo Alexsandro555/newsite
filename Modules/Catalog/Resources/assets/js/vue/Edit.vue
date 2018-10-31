@@ -48,7 +48,7 @@
     </v-container>
 </template>
 <script>
-    import { mapActions, mapState} from 'vuex'
+    import { mapActions, mapState, mapMutations } from 'vuex'
     import { ACTIONS, GLOBAL } from '@/constants'
     import formBuilder from '@/components/form/builder/FormBuilder'
     import fileBox from '@file/components/file-box/FileBox'
@@ -89,7 +89,16 @@
             productAttributes
         },
         methods: {
+            ...mapActions('catalog',{
+                initialization: GLOBAL.INITIALIZATION,
+                save: ACTIONS.SAVE_DATA,
+                updateField: ACTIONS.UPDATE_FIELD,
+                getAttributes: ACTIONS.ATTRIBUTES,
+                updateRelations: ACTIONS.UPDATE_RELATIONS
+            }),
+            ...mapMutations('initializer', {resetError: 'RESET_ERROR'}),
             init(id) {
+                this.resetError();
                 if(this.items.length == 0) {
                     this.$router.push({name: 'products'})
                 }
@@ -101,13 +110,6 @@
                     this.save(this.item)
                 }
             },
-            ...mapActions('catalog',{
-                initialization: GLOBAL.INITIALIZATION,
-                save: ACTIONS.SAVE_DATA,
-                updateField: ACTIONS.UPDATE_FIELD,
-                getAttributes: ACTIONS.ATTRIBUTES,
-                updateRelations: ACTIONS.UPDATE_RELATIONS
-            }),
         }
     }
 </script>

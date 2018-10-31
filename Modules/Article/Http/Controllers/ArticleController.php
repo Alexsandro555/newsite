@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\Article\Entities\Article;
+use Modules\Article\Http\Requests\ArticleRequest;
 use Modules\Files\Entities\File;
 
 class ArticleController extends Controller
@@ -39,6 +40,7 @@ class ArticleController extends Controller
           $article->title = 'По умолчанию';
           $article->url_key = 'po-umolchaniyu';
           $article->news = 0;
+          $article->page = 0;
           $article->save();
         }
         return $article;

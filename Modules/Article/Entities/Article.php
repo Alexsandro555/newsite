@@ -40,6 +40,9 @@ class Article extends Model
     ],
     'news' => [
       'enabled' => true
+    ],
+    'page' => [
+      'enabled' => true
     ]
   ];
 

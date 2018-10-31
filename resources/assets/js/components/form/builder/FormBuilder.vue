@@ -10,6 +10,7 @@ p<template>
                       :rules="getRules(field.validations)"
                       :value="items[num]"
                       :counter="getCounter(field.validations)"
+                      :error-messages="messages[''+num+'']"
                       :required="getRequired(field.validations)"
                       @input="updateItem($event,num)"></v-text-field>
         <v-text-field v-else-if="field.type=='decimal'"
@@ -19,6 +20,7 @@ p<template>
                       :counter="getCounter(field.validations)"
                       :rules="getRules(field.validations)"
                       prefix="₽"
+                      :error-messages="messages[''+num+'']"
                       :required="getRequired(field.validations)"
                       @input="updateItem($event,num)"></v-text-field>
         <v-text-field v-else-if="field.type=='integer' && !field.primary"
@@ -28,6 +30,7 @@ p<template>
                       :counter="getCounter(field.validations)"
                       :rules="getRules(field.validations)"
                       :required="getRequired(field.validations)"
+                      :error-messages="messages[''+num+'']"
                       @input="updateItem($event,num)"></v-text-field>
         <v-text-field v-else-if="field.type=='text'"
                       :name="num"
@@ -37,6 +40,7 @@ p<template>
                       :rules="getRules(field.validations)"
                       :required="getRequired(field.validations)"
                       @input="updateItem($event,num)"
+                      :error-messages="messages[''+num+'']"
                       textarea></v-text-field>
         <v-checkbox v-else-if="field.type=='boolean'"
                     :label="field.label"
@@ -44,6 +48,7 @@ p<template>
                     v-model="items[num]"
                     :rules="getRules(field.validations)"
                     :required="getRequired(field.validations)"
+                    :error-messages="messages[''+num+'']"
                     @change="updateItem($event,num)"
         ></v-checkbox>
         <v-select v-else-if="field.type=='selectbox'"
@@ -57,12 +62,14 @@ p<template>
                   :label="field.label"
                   :rules="getRules(field.validations)"
                   :required="getRequired(field.validations)"
+                  :error-messages="messages[''+num+'']"
                   @change="updateItem($event,num)"
                   single-line></v-select>
     </div>
 </template>
 <script>
     import {ValidationConvert} from '../../validations'
+    import { mapState } from 'vuex'
 
     export default {
         props: {
@@ -74,6 +81,9 @@ p<template>
             return {
                 validationConvert: new ValidationConvert(),
             }
+        },
+        computed: {
+            ...mapState('initializer', ['messages'])
         },
         methods: {
             updateItem(value,key) {
