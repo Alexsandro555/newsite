@@ -13,7 +13,7 @@ let mix = require('laravel-mix');
 
 
 
-mix.js('resources/assets/js/app.js', 'public/js').version();
+mix.js('resources/assets/js/app.js', 'public/js').sourceMaps().version();
 //mix.js('resources/assets/js/app.js', 'public/js');
 mix.sass('resources/assets/sass/style.scss', 'public/css');
 mix.copy('node_modules/vuetify/dist/vuetify.min.css', 'public/css');

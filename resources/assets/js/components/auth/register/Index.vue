@@ -1,5 +1,5 @@
 <template>
-    <v-dialog v-model="openRegistration" max-width="500px" class="text-xs-center">
+    <v-dialog v-if="openRegistration" v-model="openRegistration" max-width="500px" class="text-xs-center">
         <v-card>
             <v-card-media dark height="100px" class="register-head">
                 <v-flex xs11 offset-xs1 class="left">
@@ -15,6 +15,7 @@
                                 label="Имя"
                                 v-model="form.name"
                                 :rules="nameRules"
+                                :error-messages="messages.name"
                                 :counter="255"
                                 required></v-text-field>
                         <v-text-field
@@ -23,6 +24,7 @@
                                 v-model="form.email"
                                 :rules="emailRules"
                                 :counter="255"
+                                :error-messages="messages.email"
                                 required></v-text-field>
                         <v-text-field
                                 name="password"
@@ -33,6 +35,7 @@
                                 min="8"
                                 v-model="form.password"
                                 :rules="passwordRules"
+                                :error-messages="messages.password"
                                 :counter="255"
                                 required></v-text-field>
                         <v-text-field
@@ -57,23 +60,22 @@
     </v-dialog>
 </template>
 <script>
+    import { mapActions, mapState, mapMutations } from 'vuex'
     import {Form} from '../../form/Form.js'
-    import { createNamespacedHelpers, mapActions } from 'vuex'
-    const {mapState} = createNamespacedHelpers('auth')
     export default {
         props: { },
         data: function() {
             return {
                 valid: false,
-                form: new Form({
+                form: {
                     name: '',
                     email: '',
                     password: '',
                     confirm: ''
-                }),
+                },
                 nameRules: [
                     v => !!v || 'Обязательно для заполнения',
-                    v => v.length <= 255 || 'Длина не должна превышать 255 символов'
+                    v => v && v.length <= 255 || 'Длина не должна превышать 255 символов'
                 ],
                 emailRules: [
                     v => !!v || 'E-mail обязательный для заполнения',
@@ -81,7 +83,7 @@
                 ],
                 passwordRules: [
                     v => !!v || 'Пароль обязательный для заполнения',
-                    v => v.length >=6 || 'Пароль должен иметь не менее 6 символов'
+                    v => v && v.length >=6 || 'Пароль должен иметь не менее 6 символов'
                 ],
                 confirmRules: [
                   v => !!v || 'Обязательно для заполнения',
@@ -91,28 +93,29 @@
             }
         },
         computed: {
-            ...mapState({
-                openRegistration: state => state.openRegistration,
-            })
-        },
-        mounted: function() {
+            ...mapState('auth', ['openRegistration']),
+            ...mapState('initializer', ['messages'])
         },
         methods: {
             ...mapActions('auth',[
                 'registration',
                 'disableRegistration'
             ]),
+            ...mapMutations('initializer', {resetError: 'RESET_ERROR'}),
             register() {
                 if(this.$refs.form.validate()) {
-                    this.form.submit('post', '/register').then(data => {
+                    axios.post('/register', this.form).then(data => {
                         this.disableRegistration();
-                    }).catch(errors => {
-                        console.log(errors)
-                    });
+                    })
+                    /*this.form.submit('post', '/register').then(data => {
+                        this.disableRegistration();
+                    });*/
                 }
             },
             close() {
-                this.disableRegistration();
+                this.disableRegistration()
+                this.$refs.form.reset()
+                this.resetError()
             }
         }
      }
