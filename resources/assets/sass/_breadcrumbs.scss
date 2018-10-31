@@ -9,6 +9,10 @@
 }
 
 .breadcrumb li.breadcrumb__item:nth-child(2n) {
+  //padding-left: 20px;
+}
+
+.breadcrumbs .wrapper li:nth-child(2n) {
   padding-left: 20px;
 }
 

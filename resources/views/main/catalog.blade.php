@@ -1,42 +1,28 @@
 @extends('layouts.root')
 
 @section('content')
-    <div class="content-wrapper">
-        <div class="content" style="position: relative">
-            <left-menu :prop-toggle="false"></left-menu>
-            <v-layout row wrap>
-                <v-flex xs11 offset-xs1 md9 offset-md3 text-xs-left>
-                    <v-layout column wrap>
-                        <p class="content__header text-md-left">
-                            {{$typeProduct->title}}
-                        </p>
-                        <p class="content-discription">
-                            {{$typeProduct->description}}
-                        </p>
-                    </v-layout>
-                </v-flex>
-            </v-layout>
+    <div class="breadcrumbs">
+        <div class="wrapper">
+            <v-flex xs12 text-xs-left>
+                {{ Breadcrumbs::render() }}
+            </v-flex>
         </div>
     </div>
-    <div class="delivery-wrapper">
-        <v-content>
-            <v-layout row wrap>
-                <v-flex xs12 class="text-xs-left">
+    <div class="content">
+        <div class="wrapper">
+            <div class="abs-position-catalog">
+                <left-menu :prop-toggle="false"></left-menu>
+            </div>
+            <v-flex xs12 text-xs-left class="top-20 bottom-20">
+                <p class="headsite">
+                    <span>{{$typeProduct->title}}</span><br>
+                </p>
+                <v-layout row wrap>
                     @foreach($products as $product)
-                        <div class="product text-xs-center">
-                            <div class="special-product__header text-xs-center">
-                                <a href="{{route('detail',
-                                              [
-                                                  'slug'=>$product->url_key,
-                                                  'slug_type_product'=>$product->type_product->url_key,
-                                                  'slug_producer_type_product' => 'empty'
-                                              ])}}">
-                                    {{str_limit($product->title, $limit = 52, $end="...")}}
-                                </a>
-                            </div>
-                            <div class="special-product__img">
-                                <v-layout aligin-center row wrap>
-                                    <a href="#" class="img-shadow full-width">
+                        <div class="product-wrapper">
+                            <div class="product">
+                                <div class="product-image-wrapper">
+                                    <div class="product-image">
                                         @if($product->files->count()>0)
                                             @foreach($product->files as $fileRecord)
                                                 @foreach($fileRecord->config as $files)
@@ -49,25 +35,31 @@
                                                 @break
                                             @endforeach
                                         @else
-                                            <img src="/images/no-image.png" width="150px"/>
+                                            <img src="{{asset('images/no-image-medium.png')}}"/>
                                         @endif
+                                    </div>
+                                </div>
+                                <div class="product__title">
+                                    <a href="/catalog/{{$product->type_product->title}}/{{$product->line_product?$product->line_product->title:'empty'}}/{{$product->url_key}}">
+                                        {{str_limit($product->title, $limit = 27, $end="...")}}
                                     </a>
+                                </div>
+                                <v-layout row wrap>
+                                    <v-flex xs8 text-xs-center>
+                                        <span class="product-old-price">{{$product->price}} руб.</span><br>
+                                        <span class="product-price-wrapper">
+                                                        <span class="product-price">{{$product->price}}</span> руб.
+                                                    </span>
+                                    </v-flex>
+                                    <v-flex xs4>
+                                        <img src="{{asset('images/btn-sale.png')}}"/>
+                                    </v-flex>
                                 </v-layout>
                             </div>
-                            <br>
-                            <div class="special-product__desc text-xs-center">Сделан на заказ</div>
-                            <v-layout col wrap>
-                                <v-flex xs8 class="special-product__price text-xs-center">
-                                    <span>{{$product->price}}</span> руб.
-                                </v-flex>
-                                <v-flex xs4 class="special-product__cart">
-                                    <img @click="addCart({{$product->id}})" src="/images/product-cart.png"/>
-                                </v-flex>
-                            </v-layout>
                         </div>
                     @endforeach
-                </v-flex>
-            </v-layout>
-        </v-content>
+                </v-layout>
+            </v-flex>
+        </div>
     </div>
 @endsection

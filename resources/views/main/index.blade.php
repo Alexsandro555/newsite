@@ -36,7 +36,7 @@
                                                 @break
                                             @endforeach
                                         @else
-                                            <img src="/images/no-image-medium.png"/>
+                                            <img src="{{asset('images/no-image-medium.png')}}"/>
                                         @endif
                                     </div>
                                 </div>
@@ -53,7 +53,7 @@
                                                     </span>
                                     </v-flex>
                                     <v-flex xs4>
-                                        <img src="./images/btn-sale.png"/>
+                                        <img src="{{asset('images/btn-sale.png')}}"/>
                                     </v-flex>
                                 </v-layout>
                             </div>
@@ -82,7 +82,7 @@
                         <div class="product">
                             <div class="product-image-wrapper">
                                 <div class="product-image">
-                                    <img src="./images/product-image.png"/>
+                                    <img src="{{asset('images/product-image.png')}}"/>
                                 </div>
                             </div>
                             <div class="product__title">
@@ -96,7 +96,7 @@
                                                     </span>
                                 </v-flex>
                                 <v-flex xs4>
-                                    <img src="./images/btn-sale.png"/>
+                                    <img src="{{asset('images/btn-sale.png')}}"/>
                                 </v-flex>
                             </v-layout>
                         </div>
@@ -105,7 +105,7 @@
                         <div class="product">
                             <div class="product-image-wrapper">
                                 <div class="product-image">
-                                    <img src="./images/product-image.png"/>
+                                    <img src="{{asset('images/product-image.png')}}"/>
                                 </div>
                             </div>
                             <div class="product__title">
@@ -119,7 +119,7 @@
                                                     </span>
                                 </v-flex>
                                 <v-flex xs4>
-                                    <img src="./images/btn-sale.png"/>
+                                    <img src="{{asset('images/btn-sale.png')}}"/>
                                 </v-flex>
                             </v-layout>
                         </div>
@@ -128,7 +128,7 @@
                         <div class="product">
                             <div class="product-image-wrapper">
                                 <div class="product-image">
-                                    <img src="./images/product-image.png"/>
+                                    <img src="{{asset('images/product-image.png')}}"/>
                                 </div>
                             </div>
                             <div class="product__title">
@@ -142,7 +142,7 @@
                                                     </span>
                                 </v-flex>
                                 <v-flex xs4>
-                                    <img src="./images/btn-sale.png"/>
+                                    <img src="{{asset('images/btn-sale.png')}}"/>
                                 </v-flex>
                             </v-layout>
                         </div>
@@ -169,19 +169,19 @@
                         Мы в соцсетях
                     </p>
                     <a href="#">
-                        <img src="./images/about-social-f.png"/>
+                        <img src="{{asset('images/about-social-f.png')}}"/>
                     </a>
                     <a href="#">
-                        <img src="./images/about-social-t.png"/>
+                        <img src="{{asset('images/about-social-t.png')}}"/>
                     </a>
                     <a href="#">
-                        <img src="./images/about-social-ok.png"/>
+                        <img src="{{asset('images/about-social-ok.png')}}"/>
                     </a>
                     <a href="#">
-                        <img src="./images/about-social-vk.png"/>
+                        <img src="{{asset('images/about-social-vk.png')}}"/>
                     </a>
                     <a href="#">
-                        <img src="./images/about-social-y.png"/>
+                        <img src="{{asset('images/about-social-y.png')}}"/>
                     </a>
                 </v-flex>
                 <v-flex xs6 text-xs-left>
@@ -223,7 +223,7 @@
                                                     </span>
                                 </v-flex>
                                 <v-flex xs4>
-                                    <img src="./images/btn-sale.png"/>
+                                    <img src="{{asset('images/btn-sale.png')}}"/>
                                 </v-flex>
                             </v-layout>
                         </div>
@@ -284,7 +284,7 @@
                 </v-flex>
                 <v-flex xs4>
                     <div class="news__big-image">
-                        <img src="./images/big-electric-motor.png"/>
+                        <img src="{{asset('images/big-electric-motor.png')}}"/>
                     </div>
                 </v-flex>
             </v-layout>
