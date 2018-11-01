@@ -9,6 +9,7 @@ export default {
     [GLOBAL.SET_FIELDS] : ({ commit, state }) => {
         return new Promise((resolve, reject) => {
             axios.get('/initializer/fields/'+state.name).then(response => {
+                console.log(response)
                 commit('SET_FIELDS',response.data)
                 resolve()
             }).catch(error => {
