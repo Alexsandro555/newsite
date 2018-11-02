@@ -51,12 +51,9 @@
                                         <input placeholder="Поиск по сайту" class="find-input" type="text"><br><br>
                                         <v-layout row wrap>
                                             <v-flex xs2 text-xs-center>
-                                                <img src="{{asset('images/cart.png')}}" align="middle"/>
+                                                <a href="/cart#cart"><img src="{{asset('images/cart.png')}}" align="middle"/></a>
                                             </v-flex>
-                                            <v-flex xs6 text-align-left class="cart__info">
-                                                <span class="cart__gold">2</span> товара на<br>
-                                                <span class="cart__gold">1 100 000</span> руб.
-                                            </v-flex>
+                                            <cart-widget/>
                                         </v-layout>
                                     </v-flex>
                                 </v-layout>
@@ -64,6 +61,7 @@
                         </div>
                         <!--Конец верхнего меню-->
                     </header>
+                    @yield('menu')
                     @yield('content')
                     <footer>
                         <div class="wrapper footers">
@@ -134,6 +132,7 @@
             </v-container>
             <dialog-registration></dialog-registration>
             <dialog-login></dialog-login>
+            <cart-modal></cart-modal>
         </v-app>
     </div>
     <script src="{{mix('/js/app.js')}}" type="application/javascript"></script>

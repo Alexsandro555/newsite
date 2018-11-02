@@ -14,19 +14,20 @@ let mix = require('laravel-mix');
 
 
 mix.js('resources/assets/js/app.js', 'public/js').sourceMaps().version();
-//mix.js('resources/assets/js/app.js', 'public/js');
 mix.sass('resources/assets/sass/style.scss', 'public/css');
 mix.copy('node_modules/vuetify/dist/vuetify.min.css', 'public/css');
 
 mix.webpackConfig({
     resolve: {
-        extensions: ['.js', '.vue', '.json'],
+        extensions: ['.js', '.vue', '.json', '.scss'],
         alias: {
             '@': __dirname + '/resources/assets/js',
             '@article': __dirname + '/Modules/Article/Resources/assets/js',
             '@cart': __dirname + '/Modules/Cart/Resources/assets/js',
             '@catalog': __dirname + '/Modules/Catalog/Resources/assets/js',
-            '@file': __dirname + '/Modules/Files/Resources/assets/js'
+            '@file': __dirname + '/Modules/Files/Resources/assets/js',
+            cartScss: path.resolve(__dirname + '/Modules/Cart/Resources/assets/scss'),
+            articleScss: path.resolve(__dirname + '/Modules/Article/Resources/assets/scss')
         }
     }
 })

@@ -1,4 +1,4 @@
-.application.theme--light.leader{
+.application.theme--light.leader {
   background-color: #dcecf7;
 }
 
@@ -40,7 +40,7 @@
 }
 
 @import 'find';
-@import 'cart';
+@import '~cartScss/cart';
 
 .headsite {
   color: $color-blue-dark;
@@ -90,6 +90,6 @@
 @import 'detail';
 @import 'detail_characteristics';
 @import 'SEO.scss';
-@import 'articles.scss';
+@import '~articleScss/articles';
 @import 'breadcrumbs.scss';
 @import 'footer';

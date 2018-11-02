@@ -4,7 +4,7 @@ export const cartApi = {
     url: '/cart',
     get() {
         return new Promise((resolve, reject) => {
-            axios.get(this.url).then(response => response.data).then(response => {
+            axios.get(this.url+'/widget').then(response => response.data).then(response => {
                 resolve(response)
             }).catch(error => {
                 reject(error)

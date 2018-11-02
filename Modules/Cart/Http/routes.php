@@ -2,7 +2,8 @@
 
 Route::group(['middleware' => 'web', 'prefix' => 'cart', 'namespace' => 'Modules\Cart\Http\Controllers'], function()
 {
-    Route::get('/', 'CartController@index');
+    Route::get('/', 'CartController@show');
+    Route::get('/widget', 'CartController@index');
     Route::patch('/', 'CartController@store');
     Route::get('/set-qty/{id}/{qty}', 'CartController@setQty');
     Route::delete('/{rowId}', 'CartController@destroy');

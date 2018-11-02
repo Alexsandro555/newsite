@@ -27,7 +27,7 @@
                                 <span class="detail__old-price">{{$product->price}} руб.</span><br>
                                 <span class="detail__price--current">{{$product->price}}</span> руб.<br>
                                 <p>
-                                    <a class="figure-button" href="#">
+                                    <a class="figure-button" @click="addCart({{$product->id}})" href="#">
                                         Заказать
                                         <img src="{{asset('images/btn-sale-image.png')}}"/>
                                     </a>

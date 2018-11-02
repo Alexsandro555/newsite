@@ -1,9 +1,9 @@
-@extends('cart::layouts.master')
+@extends('layouts.root')
 
 @section('content')
-    <h1>Hello World</h1>
-
-    <p>
-        This view is loaded from module: {!! config('cart.name') !!}
-    </p>
+    <div class="content">
+        <div class="wrapper">
+            <cart/>
+        </div>
+    </div>
 @stop

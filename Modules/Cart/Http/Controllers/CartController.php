@@ -101,12 +101,11 @@ class CartController extends Controller
     }
 
     /**
-     * Show the specified resource.
-     * @return Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show()
     {
-        return view('cart::show');
+      return view('cart::index');
     }
 
     /**

@@ -14,7 +14,7 @@
                 <div @click="upQty(cartItem.rowId)" class="div-plus">+</div>
             </div>
         </td>
-        <td class="center">{{cartItem.price}}</td>
+        <td class="center cart-table-rub">{{cartItem.price}}</td>
         <td class="center">{{cartItem.options.article}}</td>
         <td class="center cart-table-del"><a href="#" @click.prevent="cartDelete(cartItem.rowId)"><img :src="'/../images/close.gif'"/></a></td>
     </tr>

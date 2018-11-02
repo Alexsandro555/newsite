@@ -37,7 +37,7 @@
     </v-container>
 </template>
 <script>
-    import { mapActions, mapState, mapMutations } from 'vuex'
+    import { mapActions, mapState} from 'vuex'
     import { ACTIONS, GLOBAL } from '@/constants'
     import FormBuilder from '@/components/form/builder/FormBuilder.vue'
 
@@ -68,9 +68,7 @@
             FormBuilder
         },
         methods: {
-            ...mapMutations('initializer', {resetError: 'RESET_ERROR'}),
             init(id) {
-                this.resetError()
                 if(this.items.length == 0) {
                     this.$router.push({name: 'articles'})
                 }

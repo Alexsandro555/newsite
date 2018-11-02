@@ -1,17 +1,8 @@
 <template>
-    <div class="cart">
-        <table>
-            <tbody>
-            <tr>
-                <td rowspan="2"><img class="cart__img" @click="show" src="/images/cart.png"/></td>
-                <td><span class="cart__col-yell">{{count}}</span> товара на</td>
-            </tr>
-            <tr>
-                <td><span class="cart__col-yell">{{total}}</span> руб.</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
+    <v-flex xs6 text-align-left class="cart__info">
+        <span class="cart__gold">{{count}}</span> товара на<br>
+        <span class="cart__gold">{{total}}</span> руб.
+    </v-flex>
 </template>
 <script>
     import { ACTIONS, MUTATIONS, GETTERS } from "@cart/constants"

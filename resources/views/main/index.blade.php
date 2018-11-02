@@ -1,11 +1,16 @@
 @extends('layouts.root')
 
+@section('menu')
+    <div class="menu-wrapper wrapper">
+        <div class="abs-position">
+            <left-menu></left-menu>
+        </div>
+    </div>
+@endsection
+
 @section('content')
     <div class="content">
         <div class="wrapper">
-            <div class="abs-position">
-                <left-menu></left-menu>
-            </div>
             <v-flex xs10 offset-xs2 text-xs-left class="bottom-20">
                 <v-layout row wrap>
                     <v-flex xs9>
@@ -53,7 +58,7 @@
                                                     </span>
                                     </v-flex>
                                     <v-flex xs4>
-                                        <img src="{{asset('images/btn-sale.png')}}"/>
+                                        <img @click="addCart({{$specialProduct->id}})" src="{{asset('images/btn-sale.png')}}"/>
                                     </v-flex>
                                 </v-layout>
                             </div>

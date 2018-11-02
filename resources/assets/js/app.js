@@ -35,25 +35,41 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 //Vue.component('site', require('./components/site/Index.vue'));
 Vue.component('app', require('./components/app/Index.vue'));
 //Vue.component('cart-widget', require('../../../Modules/Cart/Resources/assets/js/components/cart/widget'));
+
+// Аутентификация
 Vue.component('dialog-registration', require('./components/auth/register'));
 Vue.component('dialog-login', require('./components/auth/login'));
 Vue.component('auth-widget', require('./components/auth/login-widget'));
+
+
 Vue.component('leader-slider', require('./components/leader/slider'));
 import DetailImage from '@/vue/DetailImage'
 Vue.component('detail-image', DetailImage)
 Vue.component('left-menu', require('./components/menu/LeftMenu'));
-Vue.component('cart-widget', require('@cart/vue/Widget'));
 import Wysiwyg from '@/components/wysiwyg/Index'
 Vue.component('wysiwyg', Wysiwyg)
 import Notifications from '@/vue/Notifications.vue'
 Vue.component('notifications', Notifications)
 import NamvigationMenu  from '@/vue/NavigationMenu.vue'
 Vue.component('navigation-menu', NamvigationMenu)
+
+// Корзина
+Vue.component('cart-widget', require('@cart/vue/Widget'));
 import CartModal from '@cart/vue/CartModal.vue'
 Vue.component('cart-modal', CartModal)
+import Cart from '@cart/vue/Cart.vue'
+Vue.component('cart', Cart)
+
 import Carousel from '@/vue/Carousel.vue'
 Vue.component('carousel', Carousel)
 
+
+// Директивы
+Vue.directive('focus', {
+    inserted: function (el) {
+        el.focus()
+    }
+})
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
