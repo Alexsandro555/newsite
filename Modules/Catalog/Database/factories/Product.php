@@ -12,8 +12,8 @@ $factory->define(Modules\Catalog\Entities\Product::class, function (Faker $faker
       'active' => 1,
       'sort' => 1,
       'onsale' => 1,
-      'special' => 1,
-      'need_order' => 1,
+      'special' => 0,
+      'need_order' => 0,
       'type_product_id' => 1,
       'producer_id' => 1,
       'producer_type_product_id' => 1
